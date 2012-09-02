@@ -9,15 +9,20 @@ import javax.swing.JOptionPane;
 public class ComputeChange {
 	public static void main(String[] args) {
 		int retry = 0;
-
+		JOptionPane.showMessageDialog(null,"Javier Chavez\nCompute Change\nListing 2.10 p 65");
+		
 		do{
-			JOptionPane.showMessageDialog(null,"Javier\nCompute Change");
 
 			String amountString = JOptionPane.showInputDialog(null,"Enter amount for example $11.56");
 
 			double amount  = Double.parseDouble(amountString);
 
 			int remaminingAmount = (int)(amount*100);
+
+			// step back check to make sure they are both ==
+			if ((double)remaminingAmount%100 != (amount*100)%100) {
+				remaminingAmount++;
+			}
 
 			//find the number of dollars
 			int numberOfOneDollars = remaminingAmount / 100;
@@ -39,7 +44,7 @@ public class ComputeChange {
 			int numberOfPennies =  remaminingAmount;
 
 
-			String message = 	"Your amount consists of \n" +  
+			String message = 	"The amount $" + amount + " consists of \n" +  
 								"\t" + numberOfOneDollars + " dollars\n" + 
 								"\t" + numberOfQuaters + " quarters\n" +
 								"\t" + numberOfDimes + " dimes\n" +
