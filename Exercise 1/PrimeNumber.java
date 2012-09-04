@@ -16,7 +16,7 @@ public class PrimeNumber {
 		int number = 2;
 		String message = "";
 
-		JOptionPane.showMessageDialog(null,"Javier C\nDisplay display first 50 prime numbers.");
+		JOptionPane.showMessageDialog(null,"Javier C\nDisplay display first 50 prime numbers.\nListing 4.14 p 163");
 
 		while (count < NUMBER_OF_PRIMES) {
 			

@@ -12,7 +12,7 @@ public class ComputeLoanUsingInputDialog {
 		int retry = 0;
 
 		do{
-			JOptionPane.showMessageDialog(null,"Javier\nCompute Loan");
+			JOptionPane.showMessageDialog(null,"Javier\nCompute Loan\nLoan Listing 2.11 p 71");
 
 			String intrestDia = JOptionPane.showInputDialog("Enter Yearly Interest rate");
 

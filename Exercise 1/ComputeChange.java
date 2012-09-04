@@ -19,7 +19,7 @@ public class ComputeChange {
 
 			int remaminingAmount = (int)(amount*100);
 
-			// step back check to make sure they are both ==
+			//  make sure the non dollar amount is == when casted to int
 			if ((double)remaminingAmount%100 != (amount*100)%100) {
 				remaminingAmount++;
 			}
@@ -37,14 +37,14 @@ public class ComputeChange {
 			remaminingAmount = remaminingAmount % 10;
 
 			//find the number of nickels
-			int numberOfNickels = remaminingAmount / 5 ;
+			int numberOfNickels = remaminingAmount / 5;
 			remaminingAmount = remaminingAmount % 5;
 
 			// find the number of pennies
 			int numberOfPennies =  remaminingAmount;
 
 
-			String message = 	"The amount $" + amount + " consists of \n" +  
+			String message =    "The amount $" + amount + " consists of \n" +  
 								"\t" + numberOfOneDollars + " dollars\n" + 
 								"\t" + numberOfQuaters + " quarters\n" +
 								"\t" + numberOfDimes + " dimes\n" +

@@ -14,7 +14,7 @@ public class ComputeandInterpretBMI {
 		final double KILO_PER_POUND = 0.45359237;
 		final double METER_PER_INCH = 0.0254;
 
-		JOptionPane.showMessageDialog(null,"Javier\nCompute BMI");
+		JOptionPane.showMessageDialog(null,"Javier\nCompute BMI\nListing 3.5 p 98");
 
 		String weightString = JOptionPane.showInputDialog(null,"Enter weight in pounds");
 
