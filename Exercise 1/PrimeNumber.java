@@ -16,10 +16,11 @@ public class PrimeNumber {
 		int number = 2;
 		String message = "";
 
+		//show user info
 		JOptionPane.showMessageDialog(null,"Javier C\nDisplay display first 50 prime numbers.\nListing 4.14 p 163");
-
+		//checking constant
 		while (count < NUMBER_OF_PRIMES) {
-			
+			//init variable
 			boolean isPrime = true;
 
 			for (int divisor = 2; divisor <= number / 2; divisor++) {
@@ -28,9 +29,10 @@ public class PrimeNumber {
 					break;
 				}
 			}
-
+			// display on screen
 			if (isPrime) {
 				count++;
+				//check numbers perline
 				if (count % NUMBER_OF_PRIMES_PER_LINE == 0)
 					message += number+ "\n";
 				else

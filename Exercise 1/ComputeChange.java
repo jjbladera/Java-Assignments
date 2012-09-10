@@ -43,7 +43,7 @@ public class ComputeChange {
 			// find the number of pennies
 			int numberOfPennies =  remaminingAmount;
 
-
+			//create msg
 			String message =    "The amount $" + amount + " consists of \n" +  
 								"\t" + numberOfOneDollars + " dollars\n" + 
 								"\t" + numberOfQuaters + " quarters\n" +

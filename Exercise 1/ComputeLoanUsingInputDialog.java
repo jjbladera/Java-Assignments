@@ -9,35 +9,32 @@ import javax.swing.JOptionPane;
 
 public class ComputeLoanUsingInputDialog {
 	public static void main(String[] args) {
-		int retry = 0;
 
-		do{
+			//showing user info and program info
 			JOptionPane.showMessageDialog(null,"Javier\nCompute Loan\nLoan Listing 2.11 p 71");
-
+			//asking user input
 			String intrestDia = JOptionPane.showInputDialog("Enter Yearly Interest rate");
-
+			// convert input to double
 			double yrlyinterestRate = Double.parseDouble(intrestDia); //string to double
-
+			// calculate monthly interest rate
 			double monthlyIntrestRate = yrlyinterestRate/1200;
-
+			// ask user input
 			String numberofYrDia = JOptionPane.showInputDialog("Enter number of years");
-
+			// convert input to double
 			double numberofYrs = Double.parseDouble(numberofYrDia);
-
+			// ask user input
 			String loanDia = JOptionPane.showInputDialog("Enter the amount you want to be loaned");
-
+			// parse input
 			double loanAmount = Double.parseDouble(loanDia);
-
+			// calculate monthly payment
 			double monthlypayment = loanAmount * monthlyIntrestRate / (1-1 / Math.pow(1+monthlyIntrestRate, numberofYrs*12));
-
+			//calculate total payment after number of years
 			double totalpayment = monthlypayment * numberofYrs * 12;
+			// show message
+			String message = 	"Your monthly payment will be " + ((int)(monthlypayment*100)/100.0) + 
+								"\nyour total amount paid will be " + ((int)(totalpayment*100)/100.0);
 
-			String message = 	"Your monthly payment will be " + monthlypayment + 
-								"\nyour total amount paid will be " + totalpayment + 
-								"\n\nwould you like to play again?";
+			JOptionPane.showMessageDialog(null, message);			
 
-			retry = JOptionPane.showConfirmDialog(null, message);
-			
-		}while(retry==0);
 	}
 }
