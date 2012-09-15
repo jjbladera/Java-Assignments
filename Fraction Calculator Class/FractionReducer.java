@@ -63,7 +63,7 @@ public class FractionReducer {
         resultNum = numerator / gcd;
         resultDen = denominator / gcd;
 
-        //if the num and denominator are the same after reduction 
+        //if the numerator and denominator are the same after reduction 
         //it was in lowest form 
         if (resultNum != numerator && resultDen != denominator)
             resultFactored =  "which reduces to " + resultNum + "/" + resultDen;

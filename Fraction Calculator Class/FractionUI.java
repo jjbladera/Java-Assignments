@@ -35,9 +35,9 @@ public class FractionUI {
         do{
             //ask for user input
             strFrac1 = (String)JOptionPane.showInputDialog(null,"Please enter your first fraction\n\ne.g. 2/15"
-                , "Fraction Calculations", JOptionPane.QUESTION_MESSAGE,null, null, strFrac1);
+                , "Fraction Calculations", JOptionPane.OK_OPTION,null, null, strFrac1);
             strFrac2 = (String)JOptionPane.showInputDialog(null,"Please enter your second fraction\n\ne.g. 1/6"
-                , "Fraction Calculations", JOptionPane.QUESTION_MESSAGE,null, null, strFrac2);
+                , "Fraction Calculations", JOptionPane.OK_OPTION,null, null, strFrac2);
 
 
             // create a list of operations
@@ -54,7 +54,8 @@ public class FractionUI {
             //after selection has been made, its saved to operation var
 
             operation = (String)JOptionPane.showInputDialog(frame, "Select operation" , "Chose operation"
-                , JOptionPane.QUESTION_MESSAGE,icon, operationList, "+");
+                , JOptionPane.OK_OPTION,icon, operationList, "+");
+            
             //send data to calculator
             calc.setInputData(strFrac1, strFrac2, operation);
             //get data back
@@ -66,7 +67,7 @@ public class FractionUI {
             JOptionPane.showMessageDialog(null, results,"Result",JOptionPane.PLAIN_MESSAGE);
 
             //and ask for another try
-            retry = JOptionPane.showConfirmDialog(null, "Would you like to calculate another fraction.", "Try again?", JOptionPane.YES_NO_CANCEL_OPTION);
+            retry = JOptionPane.showConfirmDialog(null, "Would you like to calculate another fraction.", "Try again?", JOptionPane.YES_NO_OPTION);
 
         }while(retry==0);
 
