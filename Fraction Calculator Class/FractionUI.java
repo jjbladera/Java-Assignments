@@ -24,6 +24,7 @@ public class FractionUI {
     private String strFrac2="";
     private String operation;
     private String results="";
+    private String resultInDecimal = "";
     private int retry = 0;
 
     public FractionUI(){
@@ -58,6 +59,9 @@ public class FractionUI {
             calc.setInputData(strFrac1, strFrac2, operation);
             //get data back
             results = calc.getResults();
+            resultInDecimal = calc.getDecimalResults();
+            // add decimal result to final string.
+            results += " (" + resultInDecimal + ")";
             // show result to user
             JOptionPane.showMessageDialog(null, results,"Result",JOptionPane.PLAIN_MESSAGE);
 

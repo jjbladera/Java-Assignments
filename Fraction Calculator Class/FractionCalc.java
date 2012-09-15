@@ -49,10 +49,10 @@ public class FractionCalc {
         strFrac1 = frac1;
         strFrac2 = frac2;
         operator = oper;
-        calFraction();
+        calcFraction();
     }
     // private // 
-    private void calFraction(){
+    private void calcFraction(){
         //create tokenizer to split user input and delimiter is '/'
         tokenizer1 = new StringTokenizer(strFrac1,"/");
         tokenizer2 = new StringTokenizer(strFrac2,"/");
@@ -105,17 +105,18 @@ public class FractionCalc {
 
             // show 4 trailing numbers
             formatter = new DecimalFormat("0.0000");
-            //sending to string
+            //set decimalResults
             decimalResults = formatter.format(resultDec); 
+            //reduce fraction
             reducer = new FractionReducer();
             reducer.setFraction(resultNum, resultDen);
+            //set reducedFrac
             reducedFrac = reducer.getResultsFrac();
 
-            //build the result string
-            resultsString = num1 + "/" + den1 + opp +
+            //build and set the result string
+            resultsString = num1 + "/" + den1 + " " + opp + " " +
                             num2 + "/" + den2 + " = " + 
-                            result + reducedFrac +
-                            " (" + decimalResults + ")";
+                            result + " " + reducedFrac;
         }//endelse
     }//endmethod
 }

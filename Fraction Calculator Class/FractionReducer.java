@@ -66,8 +66,8 @@ public class FractionReducer {
         //if the num and denominator are the same after reduction 
         //it was in lowest form 
         if (resultNum != numerator && resultDen != denominator)
-            resultFactored =  " which reduces to " + resultNum + "/" + resultDen;
+            resultFactored =  "which reduces to " + resultNum + "/" + resultDen;
         else
-            resultFactored = " already in lowest form ";
+            resultFactored = "already in lowest form";
     }
 }
