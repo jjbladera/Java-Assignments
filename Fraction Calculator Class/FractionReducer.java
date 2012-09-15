@@ -17,16 +17,30 @@ public class FractionReducer {
 	private int resultNum;
 	private int resultDen;
 	private String resultFactored;
+	private String fraction;
 	private boolean reduced = true;
 
+
+	//constructor//
 	public FractionReducer(){
 
 	}
+	//setters//
+	public void setFraction(String frac){ fraction = frac; }
 	public void setFraction(int num, int denom){
 		//find gcd to reduce fraction
 		numerator = num;
 		denominator = denom;
+		reduceFrac();
+	}
+	
+	//getters//
+	public String getResultsFrac(){ return resultFactored; }
+	public int getResultsNum(){ return resultNum; }
+	public int getResultsDenom(){ return resultDen; }
 
+	//private//
+	private void reduceFrac(){
 		// start out at the highest possible value
 		if (numerator > denominator)
 			gcdTst = numerator;
@@ -54,21 +68,6 @@ public class FractionReducer {
 		if (resultNum != numerator && resultDen != denominator)
 			resultFactored =  " which reduces to " + resultNum + "/" + resultDen;
 		else
-			resultFactored =  " already in lowest form ";
-
-	}
-
-	public void setFraction(String frac){
-
-	}
-
-	public String getResultsFrac(){
-		return resultFactored;
-	}
-	public int getResultsNum(){
-		return resultNum;
-	}
-	public int getResultsDenom(){
-		return resultDen;
+			resultFactored = " already in lowest form ";
 	}
 }

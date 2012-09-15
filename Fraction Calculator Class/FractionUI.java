@@ -44,7 +44,7 @@ public class FractionUI {
 			//create a combo-box
 			operactionSelection = new JComboBox(operationList);
 
-			icon = new ImageIcon("javi.png");
+			icon = new ImageIcon("javi.png");//will add pics soon
 
 			//create frame that hold drop-down selection area
 			frame = new JFrame("Chose operation");
