@@ -49,6 +49,7 @@ public class FractionCalc {
         strFrac1 = frac1;
         strFrac2 = frac2;
         operator = oper;
+        calcFraction();
     }
     // private // 
     private void calcFraction(){
@@ -77,30 +78,27 @@ public class FractionCalc {
                 case '+':
                     resultNum = (num1*den2) + (num2*den1);
                     resultDen = den1*den2;
-                    result = (resultNum + "/" + resultDen);
-                    resultDec = (double)resultNum/(double)resultDen;
                     break;
                 case '-':
                     resultNum = (num1*den2) - (num2*den1);
                     resultDen = den1*den2;
-                    result = (resultNum + "/" + resultDen);
-                    resultDec = (double)resultNum/(double)resultDen;
                     break;
                 case '/':
                     resultNum = num1*den2;
                     resultDen = den1*num2;
-                    result = (resultNum + "/" + resultDen);
-                    resultDec = (double)resultNum/(double)resultDen;
                     break;
                 case '*':
                     resultNum = num1*num2;
                     resultDen = den1*den2;
-                    result = (resultNum + "/" + resultDen);
-                    resultDec = (double)resultNum/(double)resultDen;
                     break;
                 default:
+                    resultNum = 1;
+                    resultDen = 1;
                     break;
             }//endswitch
+            
+            result = (resultNum + "/" + resultDen);
+            resultDec = (double)resultNum/(double)resultDen;
 
             // show 4 trailing numbers
             formatter = new DecimalFormat("0.0000");
