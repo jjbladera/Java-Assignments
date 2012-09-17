@@ -14,30 +14,44 @@ import java.util.StringTokenizer;
 import java.text.DecimalFormat;
 
 public class FractionCalc {
-    private FractionReducer reducer;
+    private FractionReducer reducer = new FractionReducer();
     private StringTokenizer tokenizer1;
     private StringTokenizer tokenizer2;
     private DecimalFormat formatter;
-    private String resultsString = "";
-    private String decimalResults = "";
+    private String resultsString;
+    private String decimalResults;
     private String strFrac1;
     private String strFrac2;
     private String operator;
-    private String result = "";
-    private String reducedFrac = "";
-    private String resultFactor = "";
-    private double resultDec = 0.0000;
+    private String result;
+    private String reducedFrac;
+    private double resultDec;
     private int num1;
     private int den1;
     private int num2;
     private int den2;
-    private int resultDen = 0;
-    private int resultNum = 0;
+    private int resultDen;
+    private int resultNum;
     private char opp;
 
     // Constructor //
     public FractionCalc(){
-
+        String resultsString = "";
+        String decimalResults = "";
+        String strFrac1 = "";
+        String strFrac2 = "";
+        String operator = "";
+        String result = "";
+        String reducedFrac = "";
+        String resultFactor = "";
+        double resultDec = 0.0000;
+        int num1 = 0;
+        int den1 = 0;
+        int num2 = 0;
+        int den2 = 0;
+        int resultDen = 0;
+        int resultNum = 0;
+        char opp;
     }
     // Getters //
     public String getResults(){ return resultsString; }
@@ -69,7 +83,8 @@ public class FractionCalc {
         
         //divide by zero
         if (den1 == 0 || den2 == 0) {
-            resultsString = "Sorry dividing by zero is not allowed!";
+            resultsString = "Sorry, dividing by zero is not allowed!";
+            decimalResults = "";
         }
         //if not dividing by zero
         else{
@@ -95,17 +110,17 @@ public class FractionCalc {
                     resultNum = 1;
                     resultDen = 1;
                     break;
-            }//endswitch
-            
-            result = (resultNum + "/" + resultDen);
-            resultDec = (double)resultNum/(double)resultDen;
+            }//end-switch
 
+            //build string with result
+            result = (resultNum + "/" + resultDen);
+            //divide each number for decimal result
+            resultDec = (double)resultNum/(double)resultDen;
             // show 4 trailing numbers
             formatter = new DecimalFormat("0.0000");
             //set decimalResults
             decimalResults = formatter.format(resultDec); 
             //reduce fraction
-            reducer = new FractionReducer();
             reducer.setFraction(resultNum, resultDen);
             //set reducedFrac
             reducedFrac = reducer.getResultsFrac();
@@ -114,6 +129,6 @@ public class FractionCalc {
             resultsString = num1 + "/" + den1 + " " + opp + " " +
                             num2 + "/" + den2 + " = " + 
                             result + " " + reducedFrac;
-        }//endelse
-    }//endmethod
+        }//end-else
+    }//end-calcFraction
 }

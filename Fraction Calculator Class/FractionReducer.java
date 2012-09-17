@@ -18,7 +18,7 @@ public class FractionReducer {
     private int resultDen;
     private String resultFactored;
     private String fraction;
-    private boolean reduced = true;
+
 
 
     //constructor//
