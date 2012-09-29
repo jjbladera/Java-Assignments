@@ -95,13 +95,13 @@ public class Fractions {
                 break;
                 case '/':
                     resultNum = num1*den2;
-                    resultDen = den1*num1;
+                    resultDen = den1*num2;
                     result = (resultNum + "/" + resultDen);
                     resultDec = (double)resultNum/(double)resultDen;
                 break;
                 case '*':
                     resultNum = num1*num2;
-                    resultDen = den1*den2;
+                    resultDen = den1*den1;
                     result = (resultNum + "/" + resultDen);
                     resultDec = (double)resultNum/(double)resultDen;
                 break;
