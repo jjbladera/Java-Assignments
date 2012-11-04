@@ -17,7 +17,7 @@ import java.lang.Math;
 class ColorBuilder {
 
     private int red, green, blue;
-    private int contrastRed =0, contrastGreen=0, contrastBlue=0;
+    private int contrastRed =255, contrastGreen=255, contrastBlue=255;
 
 
     public ColorBuilder(){
@@ -67,14 +67,10 @@ class ColorBuilder {
 
     public String toString(){
         //building string with all rgb values
-        String mys =    "Main Color:\t\t"+
-                        "R " + red + 
-                        " G " + green  + 
-                        " B " + blue +
-                        "\nContrasting Color:\t"+
-                        "R " + contrastRed + 
-                        " G " + contrastGreen  + 
-                        " B " + contrastBlue;
+        String mys =    "RGB: "+
+                        "R: " + red + 
+                        " G: " + green  + 
+                        " B: " + blue;
 
         return mys;
     }
@@ -93,15 +89,23 @@ class ColorBuilder {
             //if so, subtract 1 leaving the decimal 
             oppColor -= 1;
         }
+        else if (red == 0 && blue == 0 && green == 0) {
+            contrastRed = 255; //calling color's get method
+            contrastGreen = 255;
+            contrastBlue = 255;
+        }
+        else{
+            //now convert color back into RGB with NEW hue
+            //swap saturation and value to make sure lighter colors show 
+            Color rgb = Color.getHSBColor(oppColor, hsv[2], hsv[1]);
 
-        //now convert color back into RGB with NEW hue
-        //swap saturation and value to make sure lighter colors show 
-        Color rgb = Color.getHSBColor(oppColor, hsv[2], hsv[1]);
+            //assign each value for use with toString
+            contrastRed = rgb.getRed(); //calling color's get method
+            contrastGreen = rgb.getGreen();
+            contrastBlue = rgb.getBlue();
+        }
 
-        //assign each value for use with toString
-        contrastRed = rgb.getRed(); //calling color's get method
-        contrastGreen = rgb.getGreen();
-        contrastBlue = rgb.getBlue();
+
     }
 }
 

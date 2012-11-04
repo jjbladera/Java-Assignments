@@ -74,8 +74,8 @@ public class ColorBuilderFrame extends JFrame {
 		builder.setRGB(r, g, b);
 		btnChange.setForeground(builder.getMainColor());
 		btnChange.setBackground(builder.getContrastColor());
-		btnChange.setOpaque(true);
-		btnChange.setBorderPainted(false);
+		// btnChange.setOpaque(true);
+		// btnChange.setBorderPainted(false);
 		txtDescr.setText(builder.toString());
 	}
 }

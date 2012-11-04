@@ -17,7 +17,7 @@ import java.lang.Math;
 class ColorBuilder {
 
     private int red, green, blue;
-    private int contrastRed =0, contrastGreen=0, contrastBlue=0;
+    private int contrastRed =255, contrastGreen=255, contrastBlue=255;
 
 
     public ColorBuilder(){
@@ -66,52 +66,62 @@ class ColorBuilder {
     }
 
     public String toString(){
-        String mys = "Contrast: R " + contrastRed + " G " + contrastGreen  + " B " + contrastBlue
-         + "\nMain Color: R " + red + " G " + green  + " B " + blue;
+        //building string with all rgb values
+        String mys =    "Main Color:\t\t"+
+                        "R " + red + 
+                        " G " + green  + 
+                        " B " + blue +
+                        "\nContrasting Color:\t"+
+                        "R " + contrastRed + 
+                        " G " + contrastGreen  + 
+                        " B " + contrastBlue;
+
         return mys;
     }
 
     private void calculateContrast(){
-        double r = red/255.0;
-        double g = green/255.0;
-        double b = blue/255.0;
-
         //set contrasting color
-        contrastRed     = colorC(r) * 255;
-        contrastGreen   = colorC(g) * 255;
-        contrastBlue    = colorC(b) * 255;
+        contrastRed     = colorC(red);
+        contrastGreen   = colorC(green);
+        contrastBlue    = colorC(blue);
     
     }
 
     private int colorC(double x){
+         // convert color amount to percentage
+         x = x/255.0;
         /*
-            determine contrast based on % of color x
-            if the color is on either mark of 50% or 127.5
-            it will either return white or black
+            determine contrast based on % of color x.
+
+            it will either return white color if x < 50% or
+            return white if color x > 50% 
 
             by doing so there are
             there are 8 possible colors
             as either R - G - B will either be 
             all white or all black 
-            ex. y & w 1=255
+            remember 1=255
             yellow(r1g1b0) white(r1g1b1)
             magenta red 
             blue black 
             cyan green
         */
         //subtract color x% from 100%
-        // giving another color
+        // giving another color (lighter or darker)
+        //remember 1.0 == 100%
         double y = 1.0 - x;
         
         //check the distance away color x is away from color y
         //if > 50% return black
-        if (Math.abs(x-y) > .5) {
+        if (Math.abs(x-y) >= .5) {
             //return 0 color (black)
-            return 0;
+            //convert back to color
+            return 0*255;
         }
         else 
             // return all color (white)
-            return 1;
+            //convert back to color
+            return 1*255;
     }
 
 }

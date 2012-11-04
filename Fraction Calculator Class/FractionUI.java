@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
+import java.awt.*;
 
 public class FractionUI {
 
@@ -22,6 +23,7 @@ public class FractionUI {
     private ImageIcon iconMain = new ImageIcon("images/welcome.png");
     private ImageIcon iconSelect;
     private ImageIcon iconBye;
+
     private JFrame frame;
     private String strFrac1="";
     private String strFrac2="";
@@ -36,7 +38,8 @@ public class FractionUI {
     }
     public void run(){
         do{
-            iconNum = new ImageIcon("images/firstnum.png");//will add pics soon
+            Image imgF = Toolkit.getDefaultToolkit().getImage("images/firstnum.png");
+            iconNum = new ImageIcon(imgF);//will add pics soon
             //ask for user input
             strFrac1 = (String)JOptionPane.showInputDialog(null,"Please enter your first fraction\n\ne.g. 2/15"
                 , "Fraction Calculations", JOptionPane.OK_OPTION,iconNum, null, strFrac1);
