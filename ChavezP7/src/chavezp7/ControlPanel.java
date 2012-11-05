@@ -14,10 +14,10 @@ import javax.swing.JColorChooser;
  * @author youracow
  */
 public class ControlPanel extends javax.swing.JPanel {
-    
+
+    private int sides;
     private int radius;
     private boolean showCircle;
-    private int sides;
     private Color color;
     private PolygonFrame frame;
 
@@ -32,7 +32,7 @@ public class ControlPanel extends javax.swing.JPanel {
     public void setRadius(int radius) {
         this.radius = radius;
         //set UI control
-        radiusSlider.setValue(this.radius);
+        radiusSlider.setValue(radius);
     }
 
     public boolean isShowCircle() {

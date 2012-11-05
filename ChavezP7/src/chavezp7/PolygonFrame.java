@@ -27,12 +27,9 @@ public class PolygonFrame extends javax.swing.JFrame {
      * Creates new form PolygonFrame
      */
     public PolygonFrame() {
-        initComponents();
-        
+        initComponents();        
         //init drawing
-        ccc = true; // this works circumscribe
-        sides = 3;
-        csides = 3; // this works
+        sides = 6;
         radius = 1;
         circumscribe = true;
         circleColor = Color.BLUE;
@@ -42,11 +39,12 @@ public class PolygonFrame extends javax.swing.JFrame {
 
         //setting control panel componants
         controlPanel1.setFrame(this);
-        controlPanel1.setColor(circleColor);
-        controlPanel1.setRadius(radius);
-        controlPanel1.setShowCircle(ccc);
-        controlPanel1.setSides(csides);
-
+        //the values must be set explicitly
+        controlPanel1.setSides(6);
+        controlPanel1.setColor(Color.BLUE);
+        controlPanel1.setRadius(1);
+        controlPanel1.setShowCircle(true);
+        drawPanel1.repaint();
 
     }
 // <editor-fold defaultstate="collapsed" desc="Setters">
@@ -89,7 +87,7 @@ public class PolygonFrame extends javax.swing.JFrame {
         infoPanel1.setShowCircle(circumscribe);
 
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
