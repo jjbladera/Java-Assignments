@@ -31,20 +31,19 @@ public class DrawPanel extends javax.swing.JPanel {
         circle=false;
         radius=1;
         circleColor = Color.RED;
-        //repaint();
-        
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Setters">
     public void setNumberOfSides(int NumberOfSides) {
         this.NumberOfSides = NumberOfSides;
         repaint();
     }
-
+    
     public void setCircle(boolean circle) {
         this.circle = circle;
         repaint();
     }
-
+    
     public void setRadius(int radius) {
         this.radius = radius;
         repaint();
@@ -54,30 +53,31 @@ public class DrawPanel extends javax.swing.JPanel {
         this.circleColor = circleColor;
         repaint();
     }
+    //</editor-fold>
     
     @Override
-    protected void paintComponent(Graphics g)
+    protected void paintComponent(final Graphics g)
     {
         super.paintComponent(g);
-        
-        g.setColor(circleColor);
+        int newRadius;
         int centerX = (getWidth() / 2);
         int centerY = (getHeight() / 2);
-        
+        g.setColor(circleColor);
+
         //check to what is larger side is lager and take the smaller of the two
         //onsetting radius
         if (centerX < centerY) {
-            radius = (centerX*radius)/10;//radius*centerX/10;
+            newRadius = (centerX*radius)/10;//radius*centerX/10;
         }
         else {
-            radius = (centerY*radius)/10;//radius*centerY/10;
+            newRadius = (centerY*radius)/10;//radius*centerY/10;
         }
         
-//        radius(userGiven)*centerX|Y(smallest sidelength)/10(maxdimeter)
+//        radius(userGiven)*centerX|Y(smallest sidelength)/10(max radius)
 
         
-        int top = (centerY - radius);    // top edge of square                                     
-        int left = (centerX - radius);   // left edge of square 
+        int top = (centerY - newRadius);    // top edge of square                                     
+        int left = (centerX - newRadius);   // left edge of square 
 
         int [] x = new int[NumberOfSides];
         int [] y = new int[NumberOfSides];
@@ -85,18 +85,17 @@ public class DrawPanel extends javax.swing.JPanel {
         
         for (int i = 0; i < NumberOfSides; i++) {
             double theta = Math.toRadians((360.0/NumberOfSides)*i);
-            x[i] = (int) ((radius) * Math.cos(theta));
-            y[i] = (int) ((radius) * Math.sin(theta));
+            x[i] = (int) ((newRadius) * Math.cos(theta));
+            y[i] = (int) ((newRadius) * Math.sin(theta));
         }
 
         if (circle) {
-            g.drawOval(left,top, radius*2, radius*2);
+            g.drawOval(left,top, newRadius*2, newRadius*2);
         }
         
         g.translate(centerX, centerY);
 
         g.drawPolygon(x,y,NumberOfSides);
-        
         
     }
 
@@ -110,7 +109,6 @@ public class DrawPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(null);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -123,6 +121,7 @@ public class DrawPanel extends javax.swing.JPanel {
             .add(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 

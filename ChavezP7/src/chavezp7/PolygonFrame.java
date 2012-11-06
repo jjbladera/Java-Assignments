@@ -5,7 +5,6 @@
 package chavezp7;
 
 import java.awt.Color;
-import java.awt.Component;
 
 /**
  *
@@ -40,7 +39,7 @@ public class PolygonFrame extends javax.swing.JFrame {
 
         //setting control panel componants
         controlPanel1.setFrame(this);
-        //the values must be set explicitly
+        //the values must set explicitly
         controlPanel1.setSides(6);
         controlPanel1.setColor(Color.BLUE);
         controlPanel1.setRadius(1);
