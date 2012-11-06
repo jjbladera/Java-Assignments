@@ -5,6 +5,7 @@
 package chavezp7;
 
 import java.awt.Color;
+import java.awt.Component;
 
 /**
  *
@@ -68,6 +69,7 @@ public class PolygonFrame extends javax.swing.JFrame {
         update();
     }
 // </editor-fold>
+    
     private void update() {
         //set information for image in drawpanel
         drawPanel1.setRadius(radius);
@@ -85,8 +87,9 @@ public class PolygonFrame extends javax.swing.JFrame {
         infoPanel1.setCircleArea(calculator.getCircleArea());
         infoPanel1.setCircumference(calculator.getCircumference());
         infoPanel1.setShowCircle(circumscribe);
-
+        
     }
+        
     
     /**
      * This method is called from within the constructor to initialize the form.
