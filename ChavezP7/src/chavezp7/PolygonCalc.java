@@ -1,6 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* PolygonCalc.java
+ * 
+ * Javier Chavez
+ * jchavez589@cnm.edu
+ * 
+ * CIS 2275 Java Programming 1 
+ * 
+ * Program 7: polygons
+ * DUE Nov8 2012
+ * 
  */
 package chavezp7;
 

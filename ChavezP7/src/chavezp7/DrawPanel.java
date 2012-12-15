@@ -1,6 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/*DrawPanel.java
+ * 
+ * Javier Chavez
+ * jchavez589@cnm.edu
+ * 
+ * CIS 2275 Java Programming 1 
+ * 
+ * Program 7: polygons
+ * DUE Nov8 2012
+ * 
  */
 package chavezp7;
 
@@ -59,22 +66,25 @@ public class DrawPanel extends javax.swing.JPanel {
     protected void paintComponent(final Graphics g)
     {
         super.paintComponent(g);
-        int newRadius;
+        
+        //the repaint will not fire correctly if radius is
+        //reassigned back to itself.
+        int newRadius; 
+        
+        //get the center of each of the sides
         int centerX = (getWidth() / 2);
         int centerY = (getHeight() / 2);
+        //set the color
         g.setColor(circleColor);
 
         //check to what is larger side is lager and take the smaller of the two
-        //onsetting radius
         if (centerX < centerY) {
-            newRadius = (centerX*radius)/10;//radius*centerX/10;
+            newRadius = (centerX*radius)/10;
         }
         else {
-            newRadius = (centerY*radius)/10;//radius*centerY/10;
+            newRadius = (centerY*radius)/10;
         }
-        
-//        radius(userGiven)*centerX|Y(smallest sidelength)/10(max radius)
-
+        //radius(userGiven)*centerX|Y(smallest sidelength)/10(max radius)
         
         int top = (centerY - newRadius);    // top edge of square                                     
         int left = (centerX - newRadius);   // left edge of square 
@@ -88,13 +98,15 @@ public class DrawPanel extends javax.swing.JPanel {
             x[i] = (int) ((newRadius) * Math.cos(theta));
             y[i] = (int) ((newRadius) * Math.sin(theta));
         }
-
+        //only draw the circle if user requested it
         if (circle) {
+            //no translation is needed for this part
+            //the circle is actually draw from top left edge
             g.drawOval(left,top, newRadius*2, newRadius*2);
         }
-        
+        //translate center since the drawing is based on center values
         g.translate(centerX, centerY);
-
+        
         g.drawPolygon(x,y,NumberOfSides);
         
     }

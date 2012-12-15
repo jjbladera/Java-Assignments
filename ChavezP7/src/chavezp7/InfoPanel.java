@@ -1,6 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/*InfoPanel.java
+ * 
+ * Javier Chavez
+ * jchavez589@cnm.edu
+ * 
+ * CIS 2275 Java Programming 1 
+ * 
+ * Program 7: polygons
+ * DUE Nov8 2012
+ * 
  */
 package chavezp7;
 
@@ -9,6 +16,9 @@ import java.text.DecimalFormat;
 /**
  *
  * @author youracow
+ * 
+ * new dialog 
+ * 
  */
 public class InfoPanel extends javax.swing.JPanel {
 
@@ -17,38 +27,45 @@ public class InfoPanel extends javax.swing.JPanel {
     private double circumference;
     private double circleArea;
     private boolean showCircle;
+    private int radius;
+    private int sides;
     private DecimalFormat formatter = new DecimalFormat("###.####");
 
     public InfoPanel() {
         initComponents();
-        update();
     }
     // <editor-fold defaultstate="collapsed" desc=""Setters"">
 
     public void setPolyPerimeter(double polyPerimeter) {
         this.polyPerimeter = polyPerimeter;
         perimeter.setText(String.valueOf(formatter.format(polyPerimeter)));
-        update();
     }
 
     public void setPolygonArea(double polygonArea) {
         this.polygonArea = polygonArea;
         polyArea.setText(String.valueOf(formatter.format(polygonArea)));
-        update();
     }
 
     public void setCircumference(double circumference) {
         this.circumference = circumference;
         circum.setText(String.valueOf(formatter.format(circumference)));
-        update();
     }
 
     public void setCircleArea(double circleArea) {
         this.circleArea = circleArea;
         circArea.setText(String.valueOf(formatter.format(circleArea)));
-        update();
     }
 
+    public void setRadius(int radius) {
+        this.radius = radius;
+        radiusLbl.setText("Radius: "+ radius);
+    }
+
+    public void setSides(int sides) {
+        this.sides = sides;
+        numSides.setText("Sides: "+ sides);
+    }
+    
     // </editor-fold>
     public void setShowCircle(boolean showCircle) {
         this.showCircle = showCircle;
@@ -64,9 +81,6 @@ public class InfoPanel extends javax.swing.JPanel {
             circLabel.setVisible(false);
             circArea.setVisible(false);
         }
-    }
-
-    private void update() {
     }
 
     /**
@@ -86,16 +100,17 @@ public class InfoPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         circumLabel = new javax.swing.JLabel();
         circLabel = new javax.swing.JLabel();
+        numSides = new javax.swing.JLabel();
+        radiusLbl = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Info Panel", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 18))); // NOI18N
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))), "Info Panel", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 18))); // NOI18N
         setMaximumSize(new java.awt.Dimension(160, 314));
         setMinimumSize(new java.awt.Dimension(160, 314));
         setPreferredSize(new java.awt.Dimension(160, 314));
 
         perimeter.setEditable(false);
         perimeter.setColumns(8);
-        perimeter.setDragEnabled(false);
 
         polyArea.setEditable(false);
         polyArea.setColumns(8);
@@ -114,31 +129,42 @@ public class InfoPanel extends javax.swing.JPanel {
 
         circLabel.setText("Circle Area");
 
+        numSides.setText("Sides:");
+
+        radiusLbl.setText("Raduis:");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(perimeter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel2)
                     .add(polyArea, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(circum, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(circArea, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(circLabel)
                     .add(circumLabel)
-                    .add(jLabel3))
-                .add(0, 32, Short.MAX_VALUE))
+                    .add(jLabel3)
+                    .add(circum, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(circArea, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(perimeter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .add(numSides)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(radiusLbl)
+                .add(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(26, 26, 26)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(numSides)
+                    .add(radiusLbl))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(perimeter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(9, 9, 9)
+                .add(perimeter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(polyArea, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -146,11 +172,11 @@ public class InfoPanel extends javax.swing.JPanel {
                 .add(circumLabel)
                 .add(7, 7, 7)
                 .add(circum, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(circLabel)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(circArea, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(26, 26, 26))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -160,7 +186,11 @@ public class InfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel circumLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel numSides;
     private javax.swing.JTextField perimeter;
     private javax.swing.JTextField polyArea;
+    private javax.swing.JLabel radiusLbl;
     // End of variables declaration//GEN-END:variables
+
+
 }

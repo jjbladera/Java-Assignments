@@ -4,7 +4,6 @@
  */
 package chavezp5;
 
-import com.sun.tools.javac.util.Convert;
 import java.awt.Font;
 
 /**

@@ -1,6 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/*PolygonFrame.java
+ * 
+ * Javier Chavez
+ * jchavez589@cnm.edu
+ * 
+ * CIS 2275 Java Programming 1 
+ * 
+ * Program 7: polygons
+ * DUE Nov8 2012
+ * 
  */
 package chavezp7;
 
@@ -11,14 +18,10 @@ import java.awt.Color;
  * @author youracow
  */
 public class PolygonFrame extends javax.swing.JFrame {
-    //cannot set with side
-    //having problems with rezie and repaint
 
     private int sides;
-    private int csides;
     private int radius;
     private boolean circumscribe;
-    private boolean ccc;
 
     private Color circleColor;
     private PolygonCalc calculator;
@@ -29,7 +32,7 @@ public class PolygonFrame extends javax.swing.JFrame {
     public PolygonFrame() {
         initComponents();        
         //init drawing
-        sides = 6;
+        sides = 3;
         radius = 1;
         circumscribe = true;
         circleColor = Color.BLUE;
@@ -37,13 +40,13 @@ public class PolygonFrame extends javax.swing.JFrame {
         //set calculator
         calculator = new PolygonCalc(sides, radius);
 
-        //setting control panel componants
+        //MUST BE DONE first!!! otherwise form values will not be set.
         controlPanel1.setFrame(this);
-        //the values must set explicitly
-        controlPanel1.setSides(6);
-        controlPanel1.setColor(Color.BLUE);
-        controlPanel1.setRadius(1);
-        controlPanel1.setShowCircle(true);
+        //set values in control panel
+        controlPanel1.setSides(sides);
+        controlPanel1.setColor(circleColor);
+        controlPanel1.setRadius(radius);
+        controlPanel1.setShowCircle(circumscribe);
         drawPanel1.repaint();
 
     }
@@ -86,6 +89,8 @@ public class PolygonFrame extends javax.swing.JFrame {
         infoPanel1.setCircleArea(calculator.getCircleArea());
         infoPanel1.setCircumference(calculator.getCircumference());
         infoPanel1.setShowCircle(circumscribe);
+        infoPanel1.setRadius(radius);
+        infoPanel1.setSides(sides);
         
     }
         
@@ -116,7 +121,7 @@ public class PolygonFrame extends javax.swing.JFrame {
         );
         drawPanel1Layout.setVerticalGroup(
             drawPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 0, Short.MAX_VALUE)
+            .add(0, 331, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());

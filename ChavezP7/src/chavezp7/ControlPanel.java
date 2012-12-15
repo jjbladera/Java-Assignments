@@ -1,6 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/*ControlPanel.java
+ * 
+ * Javier Chavez
+ * jchavez589@cnm.edu
+ * 
+ * CIS 2275 Java Programming 1 
+ * 
+ * Program 7: polygons
+ * DUE Nov8 2012
+ * 
  */
 package chavezp7;
 
@@ -47,8 +54,7 @@ public class ControlPanel extends javax.swing.JPanel {
         }
         else{
             showCircBox.setSelected(false);
-        }
-            
+        }   
     }
 
     public int getSides() {
@@ -79,15 +85,6 @@ public class ControlPanel extends javax.swing.JPanel {
     public void setFrame(PolygonFrame frame) {
         this.frame = frame;
     }
-    
-    
-    private void updateControlPanel() 
-    {
-        frame.setSides(Integer.parseInt(sideNum.getValue().toString()));
-        frame.setRadius(radiusSlider.getValue());
-        frame.setCircumscribe(showCircBox.isSelected());
-        frame.setCircleColor(color);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,11 +104,13 @@ public class ControlPanel extends javax.swing.JPanel {
         currentColor = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Control Panel", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 18))); // NOI18N
+        setBackground(new java.awt.Color(204, 204, 255));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Control Panel", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 18))); // NOI18N
         setMaximumSize(new java.awt.Dimension(160, 314));
         setMinimumSize(new java.awt.Dimension(160, 314));
         setPreferredSize(new java.awt.Dimension(160, 314));
 
+        radiusSlider.setBackground(new java.awt.Color(204, 204, 255));
         radiusSlider.setMajorTickSpacing(2);
         radiusSlider.setMaximum(10);
         radiusSlider.setMinimum(1);
@@ -132,6 +131,7 @@ public class ControlPanel extends javax.swing.JPanel {
             }
         });
 
+        showCircBox.setBackground(new java.awt.Color(204, 204, 255));
         showCircBox.setText("Show Circle");
         showCircBox.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -139,6 +139,7 @@ public class ControlPanel extends javax.swing.JPanel {
             }
         });
 
+        colorButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         colorButton.setText("Choose Line Color");
         colorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +159,6 @@ public class ControlPanel extends javax.swing.JPanel {
         currentColor.setMaximumSize(new java.awt.Dimension(30, 25));
         currentColor.setMinimumSize(new java.awt.Dimension(30, 25));
         currentColor.setPreferredSize(new java.awt.Dimension(30, 20));
-        currentColor.setSize(new java.awt.Dimension(30, 25));
         currentColor.setVerifyInputWhenFocusTarget(false);
         currentColor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -175,31 +175,30 @@ public class ControlPanel extends javax.swing.JPanel {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(0, 0, Short.MAX_VALUE)
-                        .add(colorButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 153, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
+                        .addContainerGap()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .add(jLabel1))
-                            .add(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .add(jLabel3)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(sideNum, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(radiusSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 153, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .add(showCircBox)))
-                        .add(0, 0, Short.MAX_VALUE)))
+                            .add(showCircBox))
+                        .add(50, 50, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(22, 22, 22)
+                        .add(jLabel5)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(currentColor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(colorButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jLabel1))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(radiusSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .add(layout.createSequentialGroup()
-                .add(22, 22, 22)
-                .add(jLabel5)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(currentColor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -210,13 +209,13 @@ public class ControlPanel extends javax.swing.JPanel {
                     .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(showCircBox)
-                .add(12, 12, 12)
+                .add(24, 24, 24)
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(radiusSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(radiusSlider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 59, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(18, 18, 18)
                 .add(colorButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 30, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel5)
                     .add(currentColor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -225,18 +224,15 @@ public class ControlPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sideNumStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sideNumStateChanged
-
-        updateControlPanel();
+        frame.setSides(Integer.parseInt(sideNum.getValue().toString()));
     }//GEN-LAST:event_sideNumStateChanged
 
     private void radiusSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_radiusSliderStateChanged
-
-        updateControlPanel();
+        frame.setRadius(radiusSlider.getValue());
     }//GEN-LAST:event_radiusSliderStateChanged
 
     private void showCircBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_showCircBoxStateChanged
-      
-        updateControlPanel();
+        frame.setCircumscribe(showCircBox.isSelected());
     }//GEN-LAST:event_showCircBoxStateChanged
 
     private void colorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorButtonActionPerformed
@@ -248,7 +244,7 @@ public class ControlPanel extends javax.swing.JPanel {
             color = newColor;
             currentColor.setBackground(color);
             currentColor.setOpaque(true);
-            updateControlPanel();
+            frame.setCircleColor(color);
         }
     }//GEN-LAST:event_colorButtonActionPerformed
 
